@@ -21,8 +21,8 @@ public class Main {
                     boolean continuar = true;
                     while (continuar) {
                         int opcaoLanche = menu.lerOpcaoLanche();
-                        boolean comCheddar = menu.perguntarAdicional("Deseja adicional de cheddar?");
-                        boolean comBaconExtra = menu.perguntarAdicional("Deseja adicional de bacon?");
+                        boolean comCheddar = menu.perguntarAdicional("cheddar (+ R$ 4,00)");
+                        boolean comBaconExtra = menu.perguntarAdicional("bacon (+ R$ 6,00)");
                         if (!sistema.adicionarLanche(pedido, opcaoLanche, comCheddar, comBaconExtra)) {
                             menu.exibirMensagem("Lanche inválido.");
                         }
