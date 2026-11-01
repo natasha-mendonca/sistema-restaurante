@@ -1,17 +1,49 @@
 package br.com.natasha.restaurante.app;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+import br.com.natasha.restaurante.pedido.Pedido;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        MenuConsole menu = new MenuConsole();
+        RestauranteFacade sistema = new RestauranteFacade();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        int opcao = 1;
+
+        while (opcao != 0) {
+            menu.exibirMenu();
+            opcao = menu.lerOpcao();
+
+            switch (opcao) {
+                case 1:
+                    String nome = menu.lerNomeCliente();
+                    Pedido pedido = sistema.criarPedido(nome);
+                    boolean continuar = true;
+                    while (continuar) {
+                        int opcaoLanche = menu.lerOpcaoLanche();
+                        if (!sistema.adicionarLanche(pedido, opcaoLanche)) {
+                            menu.exibirMensagem("Lanche inválido.");
+                        }
+                        continuar = menu.perguntarAdicionarMais();
+                    }
+                    menu.exibirPedido(pedido);
+                    break;
+
+                case 2:
+                    menu.exibirPedidos(sistema.listarPedidos());
+                    break;
+                case 3:
+                    double total = sistema.calcularTotalDoDia();
+                    menu.exibirFechamentoDoDia(total);
+                    break;
+                case 0:
+                    menu.exibirMensagem("Até amanhã!");
+                    break;
+                default:
+                    menu.exibirMensagem("Opção inválida.");
+            }
+
         }
     }
 }
+
