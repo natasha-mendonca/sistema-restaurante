@@ -1,6 +1,6 @@
 package br.com.natasha.restaurante.pedido;
 
-import br.com.natasha.restaurante.cardapio.Lanche;
+import br.com.natasha.restaurante.cardapio.ItemCardapio;
 
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ public class Pedido {
     private int numero;
     private String nomeCliente;
 
-    private ArrayList<Lanche> itens = new ArrayList<>(); /* todo pedido tem uma lista de itens*/
+    private ArrayList<ItemCardapio> itens = new ArrayList<>(); /* todo pedido tem uma lista de itens*/
 
     public Pedido(int numero, String nomeCliente) {
         this.numero = numero; //não tem regra, quem gera o número é o Gerenciador de pedido
@@ -30,18 +30,18 @@ public class Pedido {
         return numero;
     }
 
-    public ArrayList<Lanche> getItens() {
+    public ArrayList<ItemCardapio> getItens() {
         return itens;
     }
 
-    public void adicionarItem(Lanche lanche) {
-        itens.add(lanche);
+    public void adicionarItem(ItemCardapio item) {
+        itens.add(item);
     }
 
     public double calcularTotal() {
         double total = 0;
-        for (Lanche lanche : itens) {
-            total += lanche.getPreco();
+        for (ItemCardapio itemCardapio : itens) {
+            total += itemCardapio.getPreco();
         }
         return total;
     }
