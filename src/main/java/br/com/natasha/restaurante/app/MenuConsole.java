@@ -1,5 +1,6 @@
 package br.com.natasha.restaurante.app;
 
+import br.com.natasha.restaurante.cardapio.ItemCardapio;
 import br.com.natasha.restaurante.cardapio.Lanche;
 import br.com.natasha.restaurante.pedido.Pedido;
 
@@ -50,8 +51,8 @@ public class MenuConsole {
 
     public void exibirPedido(Pedido pedido) {
         System.out.println("Pedido nº " + pedido.getNumero() + " - Cliente: " + pedido.getNomeCliente());
-        for (Lanche lanche : pedido.getItens()) {
-            System.out.printf(" %s - R$ %.2f%n", lanche.getNome(), lanche.getPreco());
+        for (ItemCardapio itemCardapio : pedido.getItens()) {
+            System.out.printf(" %s - R$ %.2f%n", itemCardapio.getDescricao(), itemCardapio.getPreco());
         }
         System.out.printf("Total: R$ %.2f%n", pedido.calcularTotal());
     }

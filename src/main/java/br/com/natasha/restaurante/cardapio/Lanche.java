@@ -1,6 +1,6 @@
 package br.com.natasha.restaurante.cardapio;
 
-public class Lanche {
+public class Lanche implements ItemCardapio {
     private String nome;
     private double preco;
 
@@ -20,8 +20,14 @@ public class Lanche {
         this.nome = nome;
     }
 
+    @Override
     public double getPreco() {
         return preco;
+    }
+
+    @Override
+    public String getDescricao() {
+        return nome;
     }
 
     public void setPreco(double preco) {
