@@ -5,6 +5,7 @@ import br.com.natasha.restaurante.pedido.Pedido;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuConsole {
@@ -22,9 +23,7 @@ public class MenuConsole {
 
     public int lerOpcao() {
         System.out.print("Escolha uma opção: ");
-        int opcao = sc.nextInt();
-        sc.nextLine();
-        return opcao;
+        return lerInteiro();
     }
 
     public String lerNomeCliente() {
@@ -39,9 +38,7 @@ public class MenuConsole {
         System.out.println("2 - X-Salada  R$ 18,00");
         System.out.println("3 - X-Bacon   R$ 22,00");
         System.out.print("Escolha o lanche: ");
-        int opcao = sc.nextInt();
-        sc.nextLine();
-        return opcao;
+        return lerInteiro();
     }
 
     public boolean perguntarAdicionarMais() {
@@ -92,9 +89,7 @@ public class MenuConsole {
 
     public int lerNumeroPedido() {
         System.out.print("Número do pedido: ");
-        int numero = sc.nextInt();
-        sc.nextLine();
-        return numero;
+        return lerInteiro();
     }
 
     public int lerOpcaoModificacao() {
@@ -103,9 +98,7 @@ public class MenuConsole {
         System.out.println("2 - Remover item");
         System.out.println("3 - Cancelar pedido");
         System.out.print("Escolha uma opção: ");
-        int opcao = sc.nextInt();
-        sc.nextLine();
-        return opcao;
+        return lerInteiro();
     }
 
     public int lerNumeroItem(Pedido pedido) {
@@ -115,8 +108,19 @@ public class MenuConsole {
             contador++;
         }
         System.out.print("Número do item: ");
-        int numero = sc.nextInt();
-        sc.nextLine();
-        return numero;
+        return lerInteiro();
+    }
+
+    private int lerInteiro() {
+        while (true) {
+            try {
+                int numero = sc.nextInt();
+                sc.nextLine();
+                return numero;
+            } catch (InputMismatchException e) {
+                sc.nextLine();
+                System.out.print("Valor inválido. Digite um número: ");
+            }
+        }
     }
 }
