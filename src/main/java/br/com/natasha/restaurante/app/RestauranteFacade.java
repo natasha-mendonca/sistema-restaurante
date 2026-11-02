@@ -1,9 +1,6 @@
 package br.com.natasha.restaurante.app;
 
-import br.com.natasha.restaurante.cardapio.ComBaconExtra;
-import br.com.natasha.restaurante.cardapio.ComCheddar;
-import br.com.natasha.restaurante.cardapio.ItemCardapio;
-import br.com.natasha.restaurante.cardapio.LancheFactory;
+import br.com.natasha.restaurante.cardapio.*;
 import br.com.natasha.restaurante.pedido.GerenciadorPedidos;
 import br.com.natasha.restaurante.pedido.Pedido;
 
@@ -17,19 +14,26 @@ public class RestauranteFacade {
         return gerenciador.criarPedido(nomeCliente);
     }
 
-    public boolean adicionarLanche(Pedido pedido, int opcaoLanche, boolean comCheddar, boolean comBaconExtra) {
+    public boolean adicionarLanche(Pedido pedido, int opcaoLanche, boolean semQueijo, boolean semAlface, boolean semTomate, boolean semCebola, boolean comCheddar, boolean comBaconExtra) {
 
-        ItemCardapio item;
+        Lanche lanche;
 
         if (opcaoLanche == 1) {
-            item = (LancheFactory.xBurger());
+            lanche = (LancheFactory.xBurger());
         } else if (opcaoLanche == 2) {
-            item = (LancheFactory.xSalada());
+            lanche = (LancheFactory.xSalada());
         } else if (opcaoLanche == 3) {
-            item = (LancheFactory.xBacon());
+            lanche = (LancheFactory.xBacon());
         } else {
             return false;
         }
+        if (semQueijo) lanche.setQueijo(false);
+        if (semAlface) lanche.setAlface(false);
+        if (semTomate) lanche.setTomate(false);
+        if (semCebola) lanche.setCebola(false);
+
+        ItemCardapio item = lanche;
+
         if (comCheddar) {
             item = new ComCheddar(item);
         }

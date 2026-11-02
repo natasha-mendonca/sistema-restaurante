@@ -78,4 +78,10 @@ public class MenuConsole {
     public void exibirMensagem(String mensagem) {
         System.out.println(mensagem);
     }
+
+    public boolean perguntarRetirar(String ingrediente) {
+        System.out.printf("Retirar %s? (s/n): ", ingrediente);
+        String resposta = sc.nextLine();
+        return resposta.equalsIgnoreCase("s");
+    }
 }

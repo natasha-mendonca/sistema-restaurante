@@ -21,9 +21,13 @@ public class Main {
                     boolean continuar = true;
                     while (continuar) {
                         int opcaoLanche = menu.lerOpcaoLanche();
+                        boolean semQueijo = menu.perguntarRetirar("queijo");
+                        boolean semAlface = menu.perguntarRetirar("alface");
+                        boolean semTomate = menu.perguntarRetirar("tomate");
+                        boolean semCebola = menu.perguntarRetirar("cebola");
                         boolean comCheddar = menu.perguntarAdicional("cheddar (+ R$ 4,00)");
-                        boolean comBaconExtra = menu.perguntarAdicional("bacon (+ R$ 6,00)");
-                        if (!sistema.adicionarLanche(pedido, opcaoLanche, comCheddar, comBaconExtra)) {
+                        boolean comBaconExtra = menu.perguntarAdicional("bacon extra (+ R$ 6,00)");
+                        if (!sistema.adicionarLanche(pedido, opcaoLanche, semQueijo, semAlface, semTomate, semCebola, comCheddar, comBaconExtra)) {
                             menu.exibirMensagem("Lanche inválido.");
                         }
                         continuar = menu.perguntarAdicionarMais();
