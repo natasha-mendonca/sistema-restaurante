@@ -1,10 +1,10 @@
 package br.com.natasha.restaurante.app;
 
 import br.com.natasha.restaurante.cardapio.ItemCardapio;
-import br.com.natasha.restaurante.cardapio.Lanche;
 import br.com.natasha.restaurante.pedido.Pedido;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class MenuConsole {
@@ -70,9 +70,13 @@ public class MenuConsole {
         }
     }
 
-    public void exibirFechamentoDoDia(double total) {
+    public void exibirFechamentoDoDia(double total, HashSet<String> combinacoes) {
         System.out.println("=== FECHAMENTO DO DIA ===");
         System.out.printf("Total vendido: R$ %.2f%n", total);
+        System.out.printf("Combinações diferentes: %d%n", combinacoes.size());
+        for (String combinacao : combinacoes) {
+            System.out.println(" - " + combinacao);
+        }
         System.out.println();
     }
 

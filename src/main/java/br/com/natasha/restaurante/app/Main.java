@@ -40,7 +40,7 @@ public class Main {
                     break;
                 case 3:
                     double total = sistema.calcularTotalDoDia();
-                    menu.exibirFechamentoDoDia(total);
+                    menu.exibirFechamentoDoDia(total, sistema.listarCombinacoes());
                     break;
                 case 4:
                     int numeroPedido = menu.lerNumeroPedido();

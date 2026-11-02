@@ -1,7 +1,10 @@
 package br.com.natasha.restaurante.pedido;
 
+import br.com.natasha.restaurante.cardapio.ItemCardapio;
+
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class GerenciadorPedidos { //S do Solid cada classe com sua responsabilidade
 
@@ -35,5 +38,15 @@ public class GerenciadorPedidos { //S do Solid cada classe com sua responsabilid
             total += pedido.calcularTotal();
         }
         return total;
+    }
+
+    public HashSet<String> getCombinacoes() {
+        HashSet<String> combinacoes = new HashSet<>();
+        for (Pedido pedido : pedidos.values()) {
+            for (ItemCardapio item : pedido.getItens()) {
+                combinacoes.add(item.getDescricao());
+            }
+        }
+        return combinacoes;
     }
 }
