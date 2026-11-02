@@ -51,4 +51,21 @@ public class RestauranteFacade {
     public double calcularTotalDoDia() {
         return gerenciador.calcularTotalDoDia();
     }
+
+    public Pedido buscarPedido(int numero) {
+        return gerenciador.buscarPedido(numero);
+    }
+
+    public boolean removerItem(Pedido pedido, int numeroItem) {
+        int posicao = numeroItem - 1;
+        if (posicao < 0 || posicao >= pedido.getItens().size()) {
+            return false;
+        }
+        pedido.removerItem(posicao);
+        return true;
+    }
+
+    public void cancelarPedido(int numero) {
+        gerenciador.cancelarPedido(numero);
+    }
 }
