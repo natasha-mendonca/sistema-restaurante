@@ -15,11 +15,17 @@ public class GerenciadorPedidos { //S do Solid cada classe com sua responsabilid
         return novo;
     }
 
+    public void cancelarPedido(int numero) {
+        pedidos.remove(numero);
+    }
+
     public Pedido buscarPedido(int numero) {
+
         return pedidos.get(numero);
     }
 
     public Collection<Pedido> getPedidos() {
+
         return pedidos.values();
     }
 

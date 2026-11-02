@@ -16,6 +16,7 @@ public class MenuConsole {
         System.out.println("1 - Registrar novo pedido");
         System.out.println("2 - Listar pedidos do dia");
         System.out.println("3 - Fechar restaurante");
+        System.out.println("4 - Modificar pedido");
         System.out.println("0 - Sair");
     }
 
@@ -83,5 +84,35 @@ public class MenuConsole {
         System.out.printf("Retirar %s? (s/n): ", ingrediente);
         String resposta = sc.nextLine();
         return resposta.equalsIgnoreCase("s");
+    }
+
+    public int lerNumeroPedido() {
+        System.out.print("Número do pedido: ");
+        int numero = sc.nextInt();
+        sc.nextLine();
+        return numero;
+    }
+
+    public int lerOpcaoModificacao() {
+        System.out.println("=== MODIFICAR PEDIDO ===");
+        System.out.println("1 - Acrescentar item");
+        System.out.println("2 - Remover item");
+        System.out.println("3 - Cancelar pedido");
+        System.out.print("Escolha uma opção: ");
+        int opcao = sc.nextInt();
+        sc.nextLine();
+        return opcao;
+    }
+
+    public int lerNumeroItem(Pedido pedido) {
+        int contador = 1;
+        for (ItemCardapio itemCardapio : pedido.getItens()) {
+            System.out.printf(" %d. %s - R$ %.2f%n", contador, itemCardapio.getDescricao(), itemCardapio.getPreco());
+            contador++;
+        }
+        System.out.print("Número do item: ");
+        int numero = sc.nextInt();
+        sc.nextLine();
+        return numero;
     }
 }

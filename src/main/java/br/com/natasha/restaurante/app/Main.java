@@ -42,6 +42,39 @@ public class Main {
                     double total = sistema.calcularTotalDoDia();
                     menu.exibirFechamentoDoDia(total);
                     break;
+                case 4:
+                    int numeroPedido = menu.lerNumeroPedido();
+                    Pedido pedidoEncontrado = sistema.buscarPedido(numeroPedido);
+                    if (pedidoEncontrado == null) {
+                        menu.exibirMensagem("Pedido não encontrado.");
+                        break;
+                    }
+                    int opcaoModificacao = menu.lerOpcaoModificacao();
+                    if (opcaoModificacao == 1) {
+                        int opcaoLanche = menu.lerOpcaoLanche();
+                        boolean semQueijo = menu.perguntarRetirar("queijo");
+                        boolean semAlface = menu.perguntarRetirar("alface");
+                        boolean semTomate = menu.perguntarRetirar("tomate");
+                        boolean semCebola = menu.perguntarRetirar("cebola");
+                        boolean comCheddar = menu.perguntarAdicional("cheddar (+ R$ 4,00)");
+                        boolean comBaconExtra = menu.perguntarAdicional("bacon extra (+ R$ 6,00)");
+                        if (!sistema.adicionarLanche(pedidoEncontrado, opcaoLanche, semQueijo, semAlface, semTomate, semCebola, comCheddar, comBaconExtra)) {
+                            menu.exibirMensagem("Lanche inválido.");
+                        }
+                        menu.exibirPedido(pedidoEncontrado);
+                    } else if (opcaoModificacao == 2) {
+                        int numeroItem = menu.lerNumeroItem(pedidoEncontrado);
+                        if (!sistema.removerItem(pedidoEncontrado, numeroItem)) {
+                            menu.exibirMensagem("Item inválido.");
+                        }
+                        menu.exibirPedido(pedidoEncontrado);
+                    } else if (opcaoModificacao == 3) {
+                        sistema.cancelarPedido(numeroPedido);
+                        menu.exibirMensagem("Pedido cancelado.");
+                    } else {
+                        menu.exibirMensagem("Opção inválida.");
+                    }
+                    break;
                 case 0:
                     menu.exibirMensagem("Até amanhã!");
                     break;

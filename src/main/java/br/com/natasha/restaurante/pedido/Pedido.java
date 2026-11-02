@@ -38,6 +38,10 @@ public class Pedido {
         itens.add(item);
     }
 
+    public void removerItem(int posicao) {
+        itens.remove(posicao);
+    }
+
     public double calcularTotal() {
         double total = 0;
         for (ItemCardapio itemCardapio : itens) {
