@@ -5,6 +5,7 @@ import br.com.natasha.restaurante.pedido.GerenciadorPedidos;
 import br.com.natasha.restaurante.pedido.Pedido;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 public class RestauranteFacade {
 
@@ -67,5 +68,9 @@ public class RestauranteFacade {
 
     public void cancelarPedido(int numero) {
         gerenciador.cancelarPedido(numero);
+    }
+
+    public HashSet<String> listarCombinacoes() {
+        return gerenciador.getCombinacoes();
     }
 }
