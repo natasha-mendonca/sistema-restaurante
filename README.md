@@ -79,3 +79,5 @@ diferentes, porque o `HashSet` compara os textos das descrições. No sistema at
 sempre pergunta o cheddar antes do bacon extra, e a ordem é sempre a mesma.
 
 ## Vídeo
+
+[Assistir ao vídeo](https://drive.google.com/file/d/1129dcwplqigYTbgYprRL0orPu9hgcJik/view?usp=sharing)
